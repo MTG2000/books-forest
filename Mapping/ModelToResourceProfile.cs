@@ -9,6 +9,7 @@ namespace books_app.Mapping
         public ModelToResourceProfile()
         {
             CreateMap<User, UserDto>();
+            CreateMap<Book, BookDto>();
         }
     }
 }

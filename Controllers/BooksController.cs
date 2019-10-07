@@ -26,13 +26,48 @@ namespace books_app.Controllers
             mapper = _mapper;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var books = await repository.GetAllAsync();
+
+            if (books.FirstOrDefault() == null) return NotFound("No Books Found");
+
+            IList<BookDto> bookDtos = new List<BookDto>();
+
+            foreach (var book in books)
+            {
+                var bookDto = mapper.Map<BookDto>(book);
+                var bookTags = book.BookTags.ToList();
+                foreach (var bt in bookTags)
+                {
+                    bookDto.Tags.Add(bt.Tag.Name);
+                }
+                bookDtos.Add(bookDto);
+            }
+            return Ok(bookDtos);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var book = await repository.GetAsync(id);
+            if (book == null) return NotFound("Book with this id wasn't found :(");
+            var bookDto = mapper.Map<BookDto>(book);
+            foreach (var bt in book.BookTags.ToList())
+            {
+                bookDto.Tags.Add(bt.Tag.Name);
+            }
+            return Ok(bookDto);
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddBook([FromBody] BookDtoRequest bookDto)
         {
 
             var tags = bookDto.Tags;
             var book = mapper.Map<Book>(bookDto);
-            var result = await repository.AddBookAsync(book, tags);
+            var result = await repository.AddBookAsync(book, tags.ToArray());
             if (result == null) return BadRequest("Book Wasnt added successfully");
             return Ok(result);
         }

@@ -9,6 +9,7 @@ namespace books_app.Domain.Repositories
     {
         Task<TEntity> GetAsync(int id);
         Task<IEnumerable<TEntity>> GetAllAsync();
+        Task<IEnumerable<TEntity>> GetAllAsync(int page, int pageSize);
         Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate);
 
         // This method was not in the videos, but I thought it would be useful to add.

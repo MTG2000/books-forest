@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using books_app.Domain.Models;
@@ -31,6 +32,24 @@ namespace books_app.Presistence.Repositories
             //     System.Console.WriteLine(i.Tag.Name);
             // }
             return book.Id.ToString();
+        }
+
+        public override async Task<IEnumerable<Book>> GetAllAsync()
+        {
+            var books = await AppDbContext.Books
+                                        .Include(b => b.BookTags)
+                                        .ThenInclude(bt => bt.Tag)
+                                        .ToListAsync();
+            return books;
+        }
+
+        public override async Task<Book> GetAsync(int id)
+        {
+            return await AppDbContext.Books
+                                    .Where(b => b.Id == id)
+                                    .Include(b => b.BookTags)
+                                    .ThenInclude(bt => bt.Tag)
+                                    .FirstOrDefaultAsync();
         }
     }
 }
