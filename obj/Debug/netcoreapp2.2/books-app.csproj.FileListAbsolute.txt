@@ -1,0 +1,14 @@
+D:\tutorials\Html_Css\My_Websites\ASP.Net Core\books-app\bin\Debug\netcoreapp2.2\books-app.deps.json
+D:\tutorials\Html_Css\My_Websites\ASP.Net Core\books-app\bin\Debug\netcoreapp2.2\books-app.runtimeconfig.json
+D:\tutorials\Html_Css\My_Websites\ASP.Net Core\books-app\bin\Debug\netcoreapp2.2\books-app.runtimeconfig.dev.json
+D:\tutorials\Html_Css\My_Websites\ASP.Net Core\books-app\bin\Debug\netcoreapp2.2\books-app.dll
+D:\tutorials\Html_Css\My_Websites\ASP.Net Core\books-app\bin\Debug\netcoreapp2.2\books-app.pdb
+D:\tutorials\Html_Css\My_Websites\ASP.Net Core\books-app\obj\Debug\netcoreapp2.2\books-app.csprojAssemblyReference.cache
+D:\tutorials\Html_Css\My_Websites\ASP.Net Core\books-app\obj\Debug\netcoreapp2.2\books-app.csproj.CoreCompileInputs.cache
+D:\tutorials\Html_Css\My_Websites\ASP.Net Core\books-app\obj\Debug\netcoreapp2.2\books-app.RazorAssemblyInfo.cache
+D:\tutorials\Html_Css\My_Websites\ASP.Net Core\books-app\obj\Debug\netcoreapp2.2\books-app.RazorAssemblyInfo.cs
+D:\tutorials\Html_Css\My_Websites\ASP.Net Core\books-app\obj\Debug\netcoreapp2.2\books-app.AssemblyInfoInputs.cache
+D:\tutorials\Html_Css\My_Websites\ASP.Net Core\books-app\obj\Debug\netcoreapp2.2\books-app.AssemblyInfo.cs
+D:\tutorials\Html_Css\My_Websites\ASP.Net Core\books-app\obj\Debug\netcoreapp2.2\books-app.RazorTargetAssemblyInfo.cache
+D:\tutorials\Html_Css\My_Websites\ASP.Net Core\books-app\obj\Debug\netcoreapp2.2\books-app.dll
+D:\tutorials\Html_Css\My_Websites\ASP.Net Core\books-app\obj\Debug\netcoreapp2.2\books-app.pdb
