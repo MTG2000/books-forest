@@ -27,9 +27,10 @@ namespace books_app.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAll()
         {
-            var books = await repository.GetAllAsync();
+            var books = await repository.GetAllAsync(1, 8);
 
             if (books.FirstOrDefault() == null) return NotFound("No Books Found");
 

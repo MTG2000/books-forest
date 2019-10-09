@@ -5,6 +5,9 @@ namespace books_app.Domain.Models
 {
     public class BookDto
     {
+
+        public int Id { get; set; }
+
         [Required]
         [MinLength(5), MaxLength(30)]
         public string Title { get; set; }
@@ -13,6 +16,9 @@ namespace books_app.Domain.Models
         public string Author { get; set; }
 
         public int NumberOfPages { get; set; }
+
+        public string Image { get; set; }
+
 
         public IList<string> Tags { get; set; } = new List<string>();
     }

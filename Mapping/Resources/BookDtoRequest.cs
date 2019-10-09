@@ -14,6 +14,9 @@ namespace books_app.Domain.Models
 
         public int NumberOfPages { get; set; }
 
+        public string Image { get; set; }
+
+
         public IList<int> Tags { get; set; } = new List<int>();
     }
 }

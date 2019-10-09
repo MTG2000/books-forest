@@ -1,0 +1,12 @@
+nav {
+  ul a {
+    transition: color 0.5s ease-in-out;
+    color: #fff !important;
+    &:hover {
+      color: rgb(250, 250, 33) !important;
+    }
+  }
+  .navbar-brand {
+    font-size: 25px !important;
+  }
+}

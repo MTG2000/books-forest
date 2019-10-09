@@ -16,6 +16,8 @@ namespace books_app.Domain.Models
 
         public int NumberOfPages { get; set; }
 
+        public string Image { get; set; }
+
 
         //Dont NEVER EVER FORGET TO INITIALIZE LISTS & COLLECTIONS in Models
         public ICollection<BookTag> BookTags { get; set; } = new List<BookTag>();

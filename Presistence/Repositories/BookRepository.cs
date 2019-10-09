@@ -42,6 +42,16 @@ namespace books_app.Presistence.Repositories
                                         .ToListAsync();
             return books;
         }
+        public override async Task<IEnumerable<Book>> GetAllAsync(int page, int pageSize)
+        {
+            var books = await AppDbContext.Books
+                                        .Skip((page - 1) * pageSize)
+                                        .Take(pageSize)
+                                        .Include(b => b.BookTags)
+                                        .ThenInclude(bt => bt.Tag)
+                                        .ToListAsync();
+            return books;
+        }
 
         public override async Task<Book> GetAsync(int id)
         {
