@@ -30,7 +30,7 @@ namespace books_app.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetAll()
         {
-            var books = await repository.GetAllAsync(1, 8);
+            var books = await repository.GetAllAsync(1, 16);
 
             if (books.FirstOrDefault() == null) return NotFound("No Books Found");
 

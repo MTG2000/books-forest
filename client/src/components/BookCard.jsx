@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const BookCard = ({ Title, Image, Id }) => {
   return (
-    <Link to={`/book/${Id}`} className="mx-4">
+    <Link to={`/book/${Id}`} className="mx-4 mb-4">
       <div className="book-card" data-toggle="tooltip" title={Title}>
         <img src={Image} alt={Title} />
       </div>

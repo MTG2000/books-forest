@@ -5,6 +5,7 @@ import { context } from "../../utils/Context";
 
 const Header = () => {
   const { user, setUser } = useContext(context);
+
   const handleLogout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("auth-token");
@@ -16,7 +17,7 @@ const Header = () => {
     <nav className="navbar navbar-expand-lg navbar-dark ">
       <div className="container">
         <Link className="navbar-brand ml-5 text-primary " to="/">
-          Smart Reading
+          Books Forest
         </Link>
         <button
           className="navbar-toggler"

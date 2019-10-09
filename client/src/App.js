@@ -5,6 +5,7 @@ import Header from "./components/layouts/Header";
 import Footer from "./components/layouts/Footer";
 import { Switch, Route } from "react-router-dom";
 import Loading from "./components/layouts/Loading";
+import Overlay from "./components/layouts/Overlay";
 
 function App() {
   const Home = lazy(() => import("./components/layouts/Home"));
@@ -16,6 +17,7 @@ function App() {
     <AppWrapper>
       <div className="App">
         <Header />
+        <Overlay />
         <Suspense fallback={<Loading />}>
           <Switch>
             <Route path="/login" component={Login} />
