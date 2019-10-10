@@ -2,14 +2,14 @@ $primary: #f1ee3b;
 $secondary: #555;
 
 @import "~bootstrap/scss/bootstrap";
-@import url("https://fonts.googleapis.com/css?family=Farro&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Acme|Courgette&display=swap");
 
 html {
   min-height: 100vh;
 }
 
 body {
-  font-family: Farro, Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Acme", Verdana, Geneva, Tahoma, sans-serif;
   background: linear-gradient(45deg, rgb(34, 34, 34), rgb(0, 0, 0));
 }
 

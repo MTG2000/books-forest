@@ -25,7 +25,7 @@ const Login = () => {
       if (token) {
         localStorage.setItem("auth-token", token);
         localStorage.setItem("user", form.name);
-        setUser(form.name);
+        setUser({ name: form.name, isAdmin: response.data.isAdmin });
       }
       setRedirect(true);
     } catch ({ response }) {
@@ -43,7 +43,7 @@ const Login = () => {
         style={{ overflowX: "hidden" }}
       >
         <h1 className="text-primary text-center col-12 ">Login</h1>
-        <h6 className="text-danger text-left">{errorMessage}</h6>
+        <h6 className="text-danger text-center col-12">{errorMessage}</h6>
         <div className="form-group mb-5 col-lg-6 mx-2" data-aos123="fade-right">
           <label className="text-white">User Name</label>
           <input

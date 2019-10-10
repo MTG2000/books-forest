@@ -63,13 +63,14 @@ namespace books_app.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddBook([FromBody] BookDtoRequest bookDto)
         {
 
             var tags = bookDto.Tags;
             var book = mapper.Map<Book>(bookDto);
             var result = await repository.AddBookAsync(book, tags.ToArray());
-            if (result == null) return BadRequest("Book Wasnt added successfully");
+            if (result == null) return BadRequest("Book Wasn't added successfully");
             return Ok(result);
         }
 

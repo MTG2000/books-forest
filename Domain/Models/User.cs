@@ -12,7 +12,7 @@ namespace books_app.Domain.Models
         public string Name { get; set; }
 
         [Required]
-        [MinLength(8), MaxLength(30)]
+        [MinLength(8), MaxLength(100)]
 
         public string Password { get; set; }
 

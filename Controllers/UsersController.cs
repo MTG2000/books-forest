@@ -69,7 +69,15 @@ namespace books_app.Controllers
             var user = mapper.Map<User>(userDto);
             var token = await repository.LoginUser(user);
             if (token == null) return BadRequest();
-            return Ok(new { token = token });
+            var userData = await repository.FirstOrDefaultAsync(u => u.Name == user.Name);
+            return Ok(new { token = token, isAdmin = userData.IsAdmin });
+
+        }
+
+        [HttpGet("authenticate")]
+        public IActionResult Authenticate()
+        {
+            return Ok(new { isAdmin = User.IsInRole("Admin") });
 
         }
 

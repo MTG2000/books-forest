@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using books_app.Domain.Models;
 using books_app.Domain.Repositories;
 using books_app.Services;
+using books_app.Utils;
 
 namespace books_app.Presistence.Repositories
 {
@@ -16,9 +17,13 @@ namespace books_app.Presistence.Repositories
 
         public async Task<string> LoginUser(User user)
         {
-            var userToFind = await SingleOrDefaultAsync(u => ((u.Name == user.Name) && (u.Password == user.Password)));
-            if (userToFind == null) return null;
+            var userToFind = await SingleOrDefaultAsync(u => u.Name == user.Name);
+            var (isPasswordCorrect, _) = PasswordHasher.Check(userToFind.Password, user.Password);
+
+            if (userToFind == null || !isPasswordCorrect) return null;
+
             var token = auth.GenerateToken(userToFind.Id.ToString(), userToFind.IsAdmin);    //We should instead store isAdmin In the Database
+
             return token;
         }
 
@@ -26,8 +31,13 @@ namespace books_app.Presistence.Repositories
         {
             var userExist = await SingleOrDefaultAsync(u => u.Name == user.Name);
             if (userExist != null) return null;
+
+            var hash = PasswordHasher.Hash(user.Password);
+            user.Password = hash;
+
             await AddAsync(user);
             await SaveAsync();
+
             return user.Id.ToString();
         }
     }

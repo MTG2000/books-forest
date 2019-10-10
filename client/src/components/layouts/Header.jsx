@@ -9,7 +9,7 @@ const Header = () => {
   const handleLogout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("auth-token");
-    setUser("");
+    setUser({ name: "", isAdmin: false });
     window.location.pathname = "/";
   };
 
@@ -40,8 +40,15 @@ const Header = () => {
                 All Books
               </Link>
             </li>
+            {user.isAdmin && (
+              <li className="nav-item ">
+                <Link className="nav-link" to="/book/add">
+                  Add Book
+                </Link>
+              </li>
+            )}
             <li className="nav-item">
-              {user ? (
+              {user.name ? (
                 <button className="nav-link btn" onClick={handleLogout}>
                   Log-out
                 </button>
