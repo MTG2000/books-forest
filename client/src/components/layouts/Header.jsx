@@ -50,7 +50,7 @@ const Header = () => {
             <li className="nav-item">
               {user.name ? (
                 <button className="nav-link btn" onClick={handleLogout}>
-                  Log-out
+                  Logout
                 </button>
               ) : (
                 <Link className="nav-link" to="/login">
