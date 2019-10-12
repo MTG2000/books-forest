@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -49,11 +50,14 @@ namespace books_app
 
             });
 
+            // services.AddDbContext<AppDbContext>(options =>
+            // {
+            //     options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"));
+            // });
             services.AddDbContext<AppDbContext>(options =>
-            {
-                options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"));
-            });
-
+                        {
+                            options.UseSqlite(Configuration.GetConnectionString("LiteConnection"));
+                        });
             IdentityModelEventSource.ShowPII = true;
 
             services.AddScoped<IUserRepository, UserRepository>();
@@ -80,6 +84,8 @@ namespace books_app
                     };
                 });
 
+            services.AddSpaStaticFiles(configuration => { configuration.RootPath = "client/build"; });
+
             services.AddAutoMapper(typeof(Startup));
 
         }
@@ -96,10 +102,25 @@ namespace books_app
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseHttpsRedirection();
+
+            app.UseStaticFiles();
+            app.UseSpaStaticFiles();
+
             app.UseAuthentication();
 
-            app.UseHttpsRedirection();
             app.UseMvc();
+
+
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "client";
+
+                if (env.IsDevelopment())
+                {
+                    spa.UseReactDevelopmentServer(npmScript: "start");
+                }
+            });
         }
     }
 }

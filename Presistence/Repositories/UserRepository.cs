@@ -18,9 +18,11 @@ namespace books_app.Presistence.Repositories
         public async Task<string> LoginUser(User user)
         {
             var userToFind = await SingleOrDefaultAsync(u => u.Name == user.Name);
-            var (isPasswordCorrect, _) = PasswordHasher.Check(userToFind.Password, user.Password);
 
-            if (userToFind == null || !isPasswordCorrect) return null;
+            if (userToFind == null) return null;
+
+            var (isPasswordCorrect, _) = PasswordHasher.Check(userToFind.Password, user.Password);
+            if (!isPasswordCorrect) return null;
 
             var token = auth.GenerateToken(userToFind.Id.ToString(), userToFind.IsAdmin);    //We should instead store isAdmin In the Database
 

@@ -68,11 +68,11 @@ namespace books_app.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<short>("IsAdmin")
+                    b.Property<bool>("IsAdmin")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("IsAdmin")
                         .HasColumnType("bit")
-                        .HasDefaultValue((short)0);
+                        .HasDefaultValue(false);
 
                     b.Property<string>("Name")
                         .IsRequired()

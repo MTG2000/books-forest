@@ -8,8 +8,8 @@ using books_app.Presistence;
 namespace books_app.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20191007184830_AddedColumsToBookTable")]
-    partial class AddedColumsToBookTable
+    [Migration("20191012101010_InitialTables")]
+    partial class InitialTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,6 +24,8 @@ namespace books_app.Migrations
 
                     b.Property<string>("Author")
                         .HasMaxLength(30);
+
+                    b.Property<string>("Image");
 
                     b.Property<int>("NumberOfPages");
 
@@ -68,11 +70,11 @@ namespace books_app.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<short>("IsAdmin")
+                    b.Property<bool>("IsAdmin")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("IsAdmin")
                         .HasColumnType("bit")
-                        .HasDefaultValue((short)0);
+                        .HasDefaultValue(false);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -80,7 +82,7 @@ namespace books_app.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(30);
+                        .HasMaxLength(100);
 
                     b.HasKey("Id");
 
